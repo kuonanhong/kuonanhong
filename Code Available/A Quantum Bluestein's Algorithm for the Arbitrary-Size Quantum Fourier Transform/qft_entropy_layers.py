@@ -1,10 +1,3 @@
-# qft_entropy_layers: generate CSV and PNG (3-qubit QFT without bit-reversal)
-# Outputs:
-#   /mnt/data/qft_entropy_layers.csv
-#   /mnt/data/qft_entropy_layers.png
-# (程式已在上方執行完成並輸出檔案)
-# ref: 1.1 https://chatgpt.com/c/68a42b62-a480-8330-a243-85f2ef96da8b
-#     1.2 https://chatgpt.com/share/68a42d9f-388c-8003-8fb3-9bedaeec4491
 import numpy as np, pandas as pd, matplotlib.pyplot as plt
 np.random.seed(7)
 

@@ -1,6 +1,3 @@
-# (a) T-count estimate for chirp diagonal synthesis (epsilon=1e-6)
-# ref: 1.1 https://chatgpt.com/c/68a42b62-a480-8330-a243-85f2ef96da8b
-#     1.2 https://chatgpt.com/share/68a42d9f-388c-8003-8fb3-9bedaeec4491
 import numpy as np, pandas as pd, matplotlib.pyplot as plt
 
 def chirp_term_counts(m):

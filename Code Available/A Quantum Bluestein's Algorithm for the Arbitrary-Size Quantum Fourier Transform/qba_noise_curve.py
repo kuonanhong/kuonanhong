@@ -1,8 +1,3 @@
-# qba_noise_curve: generate qba_noise_curve.csv and qba_noise_curve.png
-# (3-qubit toy model; direct QFT vs QBA-like)
-# Outputs stored under /mnt/data in this run.
-# ref: 1.1 https://chatgpt.com/c/68a42b62-a480-8330-a243-85f2ef96da8b
-#     1.2 https://chatgpt.com/share/68a42d9f-388c-8003-8fb3-9bedaeec4491
 import numpy as np, pandas as pd, matplotlib.pyplot as plt
 
 np.random.seed(3)

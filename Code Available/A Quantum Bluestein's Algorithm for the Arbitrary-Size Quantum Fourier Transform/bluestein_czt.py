@@ -15,8 +15,6 @@ which will:
   2) Runs DFT vs Bluestein and produces "zoom_fft_overview.png".
   3) Runs CZT to zoom into a selected band and produces "czt_zoom_zoomed.png".
 """
-# ref: 1.1 https://chatgpt.com/c/68a42b62-a480-8330-a243-85f2ef96da8b
-#     1.2 https://chatgpt.com/share/68a42d9f-388c-8003-8fb3-9bedaeec4491
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
