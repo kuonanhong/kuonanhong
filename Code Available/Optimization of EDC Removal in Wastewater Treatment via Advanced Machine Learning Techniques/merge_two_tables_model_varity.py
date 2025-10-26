@@ -20,7 +20,7 @@ data.fillna(method='ffill', inplace=True)
 data.fillna(method='bfill', inplace=True)
 
 lookback = 1  
-f = open('png/file/output.txt', 'w')  
+f = open('file/output.txt', 'w')
 
 def smooth_data(df, window=5):
     datetime_col = df['time']
