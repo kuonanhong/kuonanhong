@@ -106,7 +106,7 @@ def plot_feature_importances(model, features, interval):
     plt.title('Feature Importances', fontsize=20)
     plt.gca().invert_yaxis()
     plt.tight_layout()
-    plt.savefig(f'png/New_merged5_2_2_1/Feature_Importances_{interval[0]}_{interval[1]}.png')
+    plt.savefig(f'file/Feature_Importances_{interval[0]}_{interval[1]}.png')
     plt.show()
     return importance_df
 
@@ -169,7 +169,7 @@ def run_experiment(include_edc_lags=True):
             historical_rf_params.append((rf_model, X_sub, y_sub))
 
             # Save model
-            model_filename = f'png/New_merged5_2_2_1/rf_model_{sub_start}_{sub_end}.pkl'
+            model_filename = f'file/rf_model_{sub_start}_{sub_end}.pkl'
             joblib.dump(rf_model, model_filename)
 
             # Save feature names
@@ -235,7 +235,7 @@ def run_experiment(include_edc_lags=True):
         fig.tight_layout()
 
         fig.savefig(
-            f"png/New_merged5_2_2_1/Actual_vs_Predicted_EDC_{interval[0]}_{interval[1]}_{'with_EDC' if include_edc_lags else 'without_EDC'}.png"
+            f"file/Actual_vs_Predicted_EDC_{interval[0]}_{interval[1]}_{'with_EDC' if include_edc_lags else 'without_EDC'}.png"
         )
         plt.show()
 
@@ -243,7 +243,7 @@ def run_experiment(include_edc_lags=True):
         importance_df = plot_feature_importances(next_rf_model, X_test_selected.columns, interval)
 
         # Save next model and its selected feature names
-        model_filename = f"png/New_merged5_2_2_1/next_rf_model_{interval[0]}_{interval[1]}_{'with_EDC' if include_edc_lags else 'without_EDC'}.pkl"
+        model_filename = f"file/next_rf_model_{interval[0]}_{interval[1]}_{'with_EDC' if include_edc_lags else 'without_EDC'}.pkl"
         joblib.dump(next_rf_model, model_filename)
 
         feature_names_filename = model_filename.replace('.pkl', '_features.npy')
