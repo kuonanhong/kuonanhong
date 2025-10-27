@@ -306,7 +306,7 @@ def predict_with_next_params(data, intervals, next_arima_params, next_varima_par
         plt.title(f'{column} Predictions for Last Interval')
         plt.xlabel('Time')
         plt.ylabel('Value')
-        plt.savefig(f'png/file/{column}_Predictions_for_Last_Interval_Predicted_{intervals[-1][0]}_{intervals[-1][1]}.png')
+        plt.savefig(f'file/{column}_Predictions_for_Last_Interval_Predicted_{intervals[-1][0]}_{intervals[-1][1]}.png')
 
     edc_data = last_interval_data.dropna(subset=['EDC'])
     X_edc = edc_data.drop(columns=['time', 'EDC'])
@@ -322,7 +322,7 @@ def predict_with_next_params(data, intervals, next_arima_params, next_varima_par
     plt.title(f'EDC Predictions for Last Interval')
     plt.xlabel('Time')
     plt.ylabel('EDC')
-    plt.savefig(f'png/file/EDC_Predictions_for_Last_Interval_Predicted_{intervals[-1][0]}_{intervals[-1][1]}.png')
+    plt.savefig(f'file/EDC_Predictions_for_Last_Interval_Predicted_{intervals[-1][0]}_{intervals[-1][1]}.png')
 
     return predicted_data
 
@@ -346,7 +346,7 @@ def evaluate_model(data, test_interval, trained_models, predicted_data):
             plt.xlabel('Time')
             plt.ylabel('Value')
             plt.savefig(
-                f'png/file/{column}_Model_Evaluation_for_Test_Interval_{test_interval[0]}_{test_interval[1]}.png')
+                f'file/{column}_Model_Evaluation_for_Test_Interval_{test_interval[0]}_{test_interval[1]}.png')
             # plt.show()
 
         elif model['type'] == 'RandomForest':
@@ -365,22 +365,22 @@ def evaluate_model(data, test_interval, trained_models, predicted_data):
             plt.title(f'EDC Model Evaluation for Test Interval')
             plt.xlabel('Time')
             plt.ylabel('EDC')
-            plt.savefig(f'png/file/EDC_Model_Evaluation_for_Test_Interval_{test_interval[0]}_{test_interval[1]}.png')
+            plt.savefig(f'file/EDC_Model_Evaluation_for_Test_Interval_{test_interval[0]}_{test_interval[1]}.png')
             # plt.show()
 
 def save_results_to_csv(models, arima_params_within, varima_params):
     models_df = pd.DataFrame(models)
-    models_df.to_csv('png/file/models.csv', index=False)
+    models_df.to_csv('file/models.csv', index=False)
 
     arima_params_list = [item for sublist in arima_params_within for item in sublist.items()]
     arima_params_df = pd.DataFrame(arima_params_list, columns=['Column', 'Order'])
-    arima_params_df.to_csv('png/file/arima_params.csv', index=False)
+    arima_params_df.to_csv('file/arima_params.csv', index=False)
 
     varima_params_list = [((k[0], k[1]), v) for sublist in varima_params for k, v in sublist.items()]
     varima_params_df = pd.DataFrame(varima_params_list, columns=['Column Pair', 'Order'])
     varima_params_df[['Column1', 'Column2']] = pd.DataFrame(varima_params_df['Column Pair'].tolist(), index=varima_params_df.index)
     varima_params_df.drop(columns=['Column Pair'], inplace=True)
-    varima_params_df.to_csv('png/file/varima_params.csv', index=False)
+    varima_params_df.to_csv('file/varima_params.csv', index=False)
 
 def plot_results(models, intervals):
     for start, end in intervals:
@@ -399,7 +399,7 @@ def plot_results(models, intervals):
                     plt.title(f'{column} Predictions for Interval {start} to {end}')
                     plt.xlabel('Time')
                     plt.ylabel('Value')
-                    plt.savefig(f'png/file/{column}_Predictions_for_Interval_{start}_to_{end}_file.png')
+                    plt.savefig(f'file/{column}_Predictions_for_Interval_{start}_to_{end}_file.png')
                     # plt.show()
                 elif model['type'] == 'RandomForest':
                     plt.figure(figsize=(14, 7))
@@ -412,7 +412,7 @@ def plot_results(models, intervals):
                     plt.title(f'EDC Predictions for Interval {start} to {end}')
                     plt.xlabel('Time')
                     plt.ylabel('EDC')
-                    plt.savefig(f'png/file/EDC_Predictions_for_Interval_{start}_to_{end}_file.png')
+                    plt.savefig(f'file/EDC_Predictions_for_Interval_{start}_to_{end}_file.png')
                     # plt.show()
 
 def plot_combined_results(models, test_intervals, all_predicted_data):
@@ -451,7 +451,7 @@ def plot_combined_results(models, test_intervals, all_predicted_data):
         plt.title(f'Combined Results for Interval {start} to {end}')
         plt.xlabel('Time')
         plt.ylabel('Value')
-        plt.savefig(f'png/file/Combined_Results_for_Interval_{start}_to_{end}.png')
+        plt.savefig(f'file/Combined_Results_for_Interval_{start}_to_{end}.png')
 
 all_models, all_arima_params_within, all_varima_params, all_predicted_data = process_intervals(data, time_intervals)
 test_intervals = [sub_intervals[-1] for sub_intervals in
